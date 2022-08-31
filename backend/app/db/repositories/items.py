@@ -141,7 +141,7 @@ class ItemsRepository(BaseRepository):  # noqa: WPS214
 
         if title:
             query = query.where(
-                title in items.title
+                items.title.like(f"%{title}%")
             )
 
         if tag:
