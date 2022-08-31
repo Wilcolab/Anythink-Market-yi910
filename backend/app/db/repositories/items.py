@@ -141,7 +141,7 @@ class ItemsRepository(BaseRepository):  # noqa: WPS214
 
         if title:
             query = query.where(
-                title == items.title
+                title in items.title
             )
 
         if tag:
