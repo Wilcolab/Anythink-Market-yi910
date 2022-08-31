@@ -34,10 +34,12 @@ async def list_items(
     user: Optional[User] = Depends(get_current_user_authorizer(required=False)),
     items_repo: ItemsRepository = Depends(get_repository(ItemsRepository)),
 ) -> ListOfItemsInResponse:
+
     items = await items_repo.filter_items(
         tag=items_filters.tag,
         seller=items_filters.seller,
         favorited=items_filters.favorited,
+        title=items_filters.title,
         limit=items_filters.limit,
         offset=items_filters.offset,
         requested_user=user,
